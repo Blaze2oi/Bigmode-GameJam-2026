@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0qswa671sqly"]
+
+[ext_resource type="Script" uid="uid://d3nnotn51v686" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://dgmftdacsx37a" path="res://Assets/character and tileset/Dungeon_Character.png" id="2_cvnsp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
+radius = 5.09902
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_v0iea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cvnsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["player"]]
+texture_filter = 1
+scale = Vector2(0.75, 0.875)
+texture = ExtResource("2_cvnsp")
+region_enabled = true
+region_rect = Rect2(48, 32, 16, 16)
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(10, 0)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-4, 0)
+shape = SubResource("CircleShape2D_6t5aa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.5, 3.5)
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

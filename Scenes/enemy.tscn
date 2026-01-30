@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://7x6y1470xqpf"]
+
+[ext_resource type="Script" uid="uid://blth8mgld4nps" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://ivu3i3ou8poi" path="res://Assets/character and tileset/Dungeon_Character_2.png" id="2_afpow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_287tu"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
+radius = 8.06226
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_1f0kj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_afpow")
+region_enabled = true
+region_rect = Rect2(64, 16, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_287tu")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_1f0kj")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
