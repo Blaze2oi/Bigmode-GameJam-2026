@@ -1,84 +1,90 @@
 extends CharacterBody2D
 
-@export var max_speed := 300.0
-@export var accel := 1000.0
-@export var friction := 200.0
-@export var bounce_strength := 0.8
-@export var boost_force := 900.0
-@export var boost_cooldown := 0.6
+@export_group("Movement")
+@export var max_speed: float = 300.0
+@export var accel: float = 1000.0
+@export var friction: float = 200.0
+@export var bounce_strength: float = 0.8
 
-@export var max_health := 100
-var health := 100
-var is_attacking := false
+@export_group("Abilities")
+@export var boost_force: float = 900.0
+@export var boost_cooldown: float = 0.6
+@export var attack_damage: int = 20
+@export var attack_knockback: float = 900.0
 
+@export_group("Stats")
+@export var max_health: int = 100
 
-var boost_timer := 0.0
+# --- NODES ---
+@onready var anim_right = $playeranimright
+@onready var anim_up = $playeranimup
+@onready var anim_left = $playeranimleft
+@onready var anim_down = $playeranimdown
+@onready var attack_area: Area2D = $AttackArea
 
-func _physics_process(delta):
-	boost_timer -= delta
+# Reference to the UI Bar inside the CanvasLayer
+@onready var health_bar: ProgressBar = $CanvasLayer/ProgressBar
 
-	# Direction toward mouse
+var health: int = max_health
+var boost_timer: float = 0.0
+
+func _ready() -> void:
+	# Initialize the UI
+	health_bar.max_value = max_health
+	health_bar.value = health
+
+func _physics_process(delta: float) -> void:
+	# ... (Keep existing physics logic) ...
+	if boost_timer > 0: boost_timer -= delta
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - global_position).normalized()
-
-	# Accelerate toward mouse
 	velocity += dir * accel * delta
-
-	# Clamp speed
-	if velocity.length() > max_speed:
-		velocity = velocity.normalized() * max_speed
-
-	# Friction
+	if velocity.length() > max_speed: velocity = velocity.normalized() * max_speed
 	velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-
-	# BOOST
 	if Input.is_action_just_pressed("boost") and boost_timer <= 0:
 		velocity += dir * boost_force
 		boost_timer = boost_cooldown
-
-	# Rotate toward movement direction
-	if velocity.length() > 5:
-		rotation = velocity.angle()
-
-	# Move
+	update_animation(dir)
+	var angle_to_mouse = (mouse_pos - global_position).angle()
+	attack_area.rotation = angle_to_mouse
 	var collision = move_and_collide(velocity * delta)
-
 	if collision:
-		bounce(collision)
-		
-	if Input.is_action_just_pressed("attack"):
-		is_attacking = true
-		$AttackArea.monitoring = true
-		await get_tree().create_timer(0.2).timeout
-		is_attacking = false
-		$AttackArea.monitoring = false
+		var normal = collision.get_normal()
+		velocity = velocity.bounce(normal) * bounce_strength
 
-# ---- PUT THIS OUTSIDE _physics_process ----
-func bounce(collision):
-	var normal = collision.get_normal()
-	velocity = velocity.bounce(normal) * bounce_strength
-	
-func attack():
-	for body in $AttackArea.get_overlapping_bodies():
-		if body.has_method("knockback"):
-			var dir = body.global_position - global_position
-			body.knockback(dir, 1900)
-func take_damage(amount):
+# ... (Keep animation logic: update_animation / _activate_sprite) ...
+func update_animation(dir: Vector2) -> void:
+	var angle_deg = rad_to_deg(dir.angle())
+	if angle_deg > -45 and angle_deg <= 45: _activate_sprite(anim_right)
+	elif angle_deg > 45 and angle_deg <= 135: _activate_sprite(anim_down)
+	elif angle_deg > -135 and angle_deg <= -45: _activate_sprite(anim_up)
+	else: _activate_sprite(anim_left)
+
+func _activate_sprite(active: AnimatedSprite2D) -> void:
+	anim_right.visible = false; anim_up.visible = false
+	anim_left.visible = false; anim_down.visible = false
+	active.visible = true; 
+
+func take_damage(amount: int) -> void:
 	health -= amount
+	
+	# UPDATE UI
+	health_bar.value = health
+	
 	print("Player HP:", health)
-
 	if health <= 0:
 		die()
 
-func die():
-	print("Player Dead")
-	queue_free() # later replace with restart
+func knockback(dir: Vector2, force: float) -> void:
+	velocity += dir.normalized() * force
 
+func die() -> void:
+	print("Player Dead")
+	# get_tree().reload_current_scene()
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body.has_method("take_damage"):
-		body.take_damage(20)
-
+	if body == self: return
+	if body.has_method("take_damage"): body.take_damage(attack_damage)
 	if body.has_method("knockback"):
-		var dir = body.global_position - global_position
-		body.knockback(dir, 900)
+		var k_dir = body.global_position - global_position
+		body.knockback(k_dir, attack_knockback)
