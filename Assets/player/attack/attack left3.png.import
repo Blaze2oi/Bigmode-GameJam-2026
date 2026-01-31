@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yxx4wa16u76g"
-path="res://.godot/imported/character-topdown-attack-left.png-9f8c350e686b274127e5fc0e56327bf8.ctex"
+uid="uid://pau6y74f3mei"
+path="res://.godot/imported/attack left3.png-9311a744d81605b791e5adfacde03722.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/WITH SWORD/character-topdown-attack-left.png"
-dest_files=["res://.godot/imported/character-topdown-attack-left.png-9f8c350e686b274127e5fc0e56327bf8.ctex"]
+source_file="res://Assets/player/attack/attack left3.png"
+dest_files=["res://.godot/imported/attack left3.png-9311a744d81605b791e5adfacde03722.ctex"]
 
 [params]
 
