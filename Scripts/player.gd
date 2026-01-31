@@ -16,10 +16,7 @@ extends CharacterBody2D
 @export var max_health: int = 100
 
 # --- NODES ---
-@onready var anim_right = $playeranimright
-@onready var anim_up = $playeranimup
-@onready var anim_left = $playeranimleft
-@onready var anim_down = $playeranimdown
+@onready var anim = $playeranim
 @onready var attack_area: Area2D = $AttackArea
 
 # Reference to the UI Bar inside the CanvasLayer
@@ -55,14 +52,16 @@ func _physics_process(delta: float) -> void:
 # ... (Keep animation logic: update_animation / _activate_sprite) ...
 func update_animation(dir: Vector2) -> void:
 	var angle_deg = rad_to_deg(dir.angle())
-	if angle_deg > -45 and angle_deg <= 45: _activate_sprite(anim_right)
-	elif angle_deg > 45 and angle_deg <= 135: _activate_sprite(anim_down)
-	elif angle_deg > -135 and angle_deg <= -45: _activate_sprite(anim_up)
-	else: _activate_sprite(anim_left)
+	if angle_deg > -45 and angle_deg <= 45: 
+		anim.flip_h = false
+		anim.play("side")
+	elif angle_deg > 45 and angle_deg <= 135: anim.play("down")
+	elif angle_deg > -135 and angle_deg <= -45: anim.play("up")
+	else: 
+		anim.flip_h = true
+		anim.play("side")
 
 func _activate_sprite(active: AnimatedSprite2D) -> void:
-	anim_right.visible = false; anim_up.visible = false
-	anim_left.visible = false; anim_down.visible = false
 	active.visible = true; 
 
 func take_damage(amount: int) -> void:

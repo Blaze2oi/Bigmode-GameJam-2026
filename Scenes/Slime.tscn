@@ -231,7 +231,6 @@ shape = SubResource("CircleShape2D_287tu")
 shape = SubResource("CircleShape2D_1f0kj")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-anchors_preset = -1
 offset_left = -15.0
 offset_top = -14.0
 offset_right = 15.0
