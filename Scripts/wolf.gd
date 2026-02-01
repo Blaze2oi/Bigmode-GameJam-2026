@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
 @export_group("Movement")
-@export var max_speed: float = 150.0
-@export var accel: float = 700.0
-@export var friction: float = 180.0
-@export var bounce_strength: float = 1.1
+@export var max_speed: float = 230.0
+@export var accel: float = 850.0
+@export var friction: float = 150.0
+@export var bounce_strength: float = 0.80
 
 @export_group("Stats")
-@export var max_health: int = 100
-@export var damage_to_player: int = 10
+@export var max_health: int = 230
+@export var damage_to_player: int = 15
 
 # --- NODES ---
 @onready var anim = $AnimatedSprite2d
@@ -112,7 +112,7 @@ func take_damage(amount: int) -> void:
 	await get_tree().create_timer(0.05).timeout
 	anim.modulate = Color(1, 1, 1)    # Reset color
 	
-	print("Slime Health: ", health)
+	print("wolf Health: ", health)
 	if health <= 0:
 		die()
 

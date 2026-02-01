@@ -24,6 +24,7 @@ extends CharacterBody2D
 
 var health: int = max_health
 var boost_timer: float = 0.0
+var is_dead: bool = false
 
 func _ready() -> void:
 	# Initialize the UI
@@ -31,6 +32,9 @@ func _ready() -> void:
 	health_bar.value = health
 
 func _physics_process(delta: float) -> void:
+	
+	if is_dead:
+		return
 	# ... (Keep existing physics logic) ...
 	if boost_timer > 0: boost_timer -= delta
 	var mouse_pos = get_global_mouse_position()
@@ -78,8 +82,16 @@ func knockback(dir: Vector2, force: float) -> void:
 	velocity += dir.normalized() * force
 
 func die() -> void:
+	if is_dead: return # Prevent die() from triggering twice
+	
+	is_dead = true # <--- 3. SET STATE TO TRUE
+	velocity = Vector2.ZERO # Optional: Stop sliding immediately
+	
+	anim.play("death")
 	print("Player Dead")
-	# get_tree().reload_current_scene()
+	
+	await anim.animation_finished
+	get_tree().reload_current_scene()
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body == self: return

@@ -240,11 +240,11 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_afpow")
 value = 100.0
 show_percentage = false
 
-[node name="SlimeAnim" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-3.8147e-06, -4)
 scale = Vector2(0.8125, 0.791667)
 sprite_frames = SubResource("SpriteFrames_8uf12")
-animation = &"up"
+animation = &"death"
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
