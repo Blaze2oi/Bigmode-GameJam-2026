@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var boost_cooldown: float = 0.6
 @export var attack_damage: int = 20
 @export var attack_knockback: float = 900.0
+@export var attack_cooldown: float = 0.5
 
 @export_group("Stats")
 @export var max_health: int = 100
@@ -23,6 +24,7 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = $CanvasLayer/ProgressBar
 
 var health: int = max_health
+var attack_timer: float = 0.0
 var boost_timer: float = 0.0
 var is_dead: bool = false
 
@@ -37,6 +39,7 @@ func _physics_process(delta: float) -> void:
 		return
 	# ... (Keep existing physics logic) ...
 	if boost_timer > 0: boost_timer -= delta
+	if attack_timer > 0: attack_timer -= delta
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - global_position).normalized()
 	velocity += dir * accel * delta
@@ -95,7 +98,11 @@ func die() -> void:
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body == self: return
-	if body.has_method("take_damage"): body.take_damage(attack_damage)
+	if attack_timer > 0: 
+		return
+	if body.has_method("take_damage"): 
+		body.take_damage(attack_damage)
+		attack_timer = attack_cooldown
 	if body.has_method("knockback"):
 		var k_dir = body.global_position - global_position
 		body.knockback(k_dir, attack_knockback)

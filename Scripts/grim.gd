@@ -1,15 +1,15 @@
 extends CharacterBody2D
 
 @export_group("Movement")
-@export var max_speed: float = 230.0
-@export var accel: float = 850.0
-@export var friction: float = 150.0
-@export var bounce_strength: float = 0.80
+@export var max_speed: float = 100
+@export var accel: float = 400
+@export var friction: float = 300
+@export var bounce_strength: float = 0.3
 
 @export_group("Stats")
-@export var max_health: int = 230
-@export var damage_to_player: int = 15
-@export var attack_cooldown: float = 1.0
+@export var max_health: int = 600
+@export var damage_to_player: int = 30
+@export var attack_cooldown: float = 0.5
 
 # --- NODES ---
 @onready var anim = $AnimatedSprite2d
@@ -20,8 +20,8 @@ var target: Node2D
 var stun_timer: float = 0.0
 var attack_timer: float = 0.0
 var flee_timer: float = 0.0
-var is_dying: bool = false
-var is_spawning: bool = true 
+var is_dying: bool = false 
+var is_spawning: bool = true
 
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("player")
@@ -51,6 +51,7 @@ func spawn() -> void:
 	
 	# Start normal animation
 	anim.play("down")
+	
 
 func _physics_process(delta: float) -> void:
 	if is_dying or is_spawning: return
@@ -100,22 +101,22 @@ func update_animation(dir: Vector2) -> void:
 	# RIGHT (-45 to 45)
 	if angle_deg > -45 and angle_deg <= 45:
 		anim.play("side")
-		anim.flip_h = true # Face Right
+		anim.flip_h = false # Face Right
 		
 	# DOWN (45 to 135)
 	elif angle_deg > 45 and angle_deg <= 135:
 		anim.play("down")
-		anim.flip_h = true
+		anim.flip_h = false
 		
 	# UP (-135 to -45)
 	elif angle_deg > -135 and angle_deg <= -45:
 		anim.play("up")
-		anim.flip_h = true
+		anim.flip_h = false
 		
 	# LEFT (Everything else)
 	else:
 		anim.play("side")
-		anim.flip_h = false # Face Left (Flip the side animation)
+		anim.flip_h = true # Face Left (Flip the side animation)
 
 func _handle_collision(collision: KinematicCollision2D) -> void:
 	if is_spawning: return
@@ -150,7 +151,7 @@ func take_damage(amount: int) -> void:
 	await get_tree().create_timer(0.05).timeout
 	anim.modulate = Color(1, 1, 1)    # Reset color
 	
-	print("wolf Health: ", health)
+	print("Grim Health: ", health)
 	if health <= 0:
 		die()
 

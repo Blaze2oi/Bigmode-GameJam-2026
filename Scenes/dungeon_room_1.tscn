@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://d1eks6d6ojeu0"]
+[gd_scene load_steps=8 format=4 uid="uid://d1eks6d6ojeu0"]
 
 [ext_resource type="Texture2D" uid="uid://urey55qem5u7" path="res://Assets/character and tileset/Dungeon_Tileset.png" id="1_nglny"]
 [ext_resource type="PackedScene" uid="uid://b0qswa671sqly" path="res://Scenes/player.tscn" id="2_bn3w2"]
-[ext_resource type="PackedScene" uid="uid://cxxtsa6hj474c" path="res://Scenes/Slime.tscn" id="2_ktitj"]
-[ext_resource type="PackedScene" uid="uid://d27rr3a6jt8me" path="res://Scenes/Wolf.tscn" id="3_pbevw"]
+[ext_resource type="PackedScene" uid="uid://yt5lqa2skyca" path="res://Scenes/Grim.tscn" id="6_n0vje"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn3w2"]
 texture = ExtResource("1_nglny")
@@ -259,13 +258,10 @@ tile_set = SubResource("TileSet_cv1i4")
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
-[node name="Slime" parent="EnemyContainer" instance=ExtResource("2_ktitj")]
-position = Vector2(417, 20)
-
-[node name="Wolf" parent="EnemyContainer" instance=ExtResource("3_pbevw")]
-position = Vector2(154, 226)
-
 [node name="Player" parent="." instance=ExtResource("2_bn3w2")]
-position = Vector2(161, 73)
+position = Vector2(209, 27)
 bounce_strength = 1.0
 attack_knockback = 300.0
+
+[node name="Grim" parent="." instance=ExtResource("6_n0vje")]
+position = Vector2(103, 23)

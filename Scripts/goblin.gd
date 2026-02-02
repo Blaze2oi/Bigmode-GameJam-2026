@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
 @export_group("Movement")
-@export var max_speed: float = 230.0
-@export var accel: float = 850.0
-@export var friction: float = 150.0
-@export var bounce_strength: float = 0.80
+@export var max_speed: float = 120
+@export var accel: float = 500.0
+@export var friction: float = 250.0
+@export var bounce_strength: float = 0.4
 
 @export_group("Stats")
-@export var max_health: int = 230
-@export var damage_to_player: int = 15
+@export var max_health: int = 300
+@export var damage_to_player: int = 20
 @export var attack_cooldown: float = 1.0
 
 # --- NODES ---
@@ -32,7 +32,7 @@ func _ready() -> void:
 	
 	# Start playing idle or move
 	spawn()
-	
+
 func spawn() -> void:
 	is_spawning = true
 	
@@ -51,6 +51,7 @@ func spawn() -> void:
 	
 	# Start normal animation
 	anim.play("down")
+	
 
 func _physics_process(delta: float) -> void:
 	if is_dying or is_spawning: return
@@ -143,14 +144,14 @@ func take_damage(amount: int) -> void:
 	health -= amount
 	health_bar.value = health
 	
-	flee_timer = 1.5
+	flee_timer = 1
 	
 	# Optional: Flash red when hit
 	anim.modulate = Color(10, 10, 10) # Flash White/Bright
 	await get_tree().create_timer(0.05).timeout
 	anim.modulate = Color(1, 1, 1)    # Reset color
 	
-	print("wolf Health: ", health)
+	print("Goblin Health: ", health)
 	if health <= 0:
 		die()
 
