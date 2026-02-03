@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://d1eks6d6ojeu0"]
+[gd_scene load_steps=7 format=4 uid="uid://d1eks6d6ojeu0"]
 
+[ext_resource type="Script" uid="uid://ehhve5gy7qe4" path="res://Scripts/DungeonRoom.gd" id="1_bn3w2"]
 [ext_resource type="Texture2D" uid="uid://urey55qem5u7" path="res://Assets/character and tileset/Dungeon_Tileset.png" id="1_nglny"]
-[ext_resource type="PackedScene" uid="uid://b0qswa671sqly" path="res://Scenes/player.tscn" id="2_bn3w2"]
-[ext_resource type="PackedScene" uid="uid://yt5lqa2skyca" path="res://Scenes/Grim.tscn" id="6_n0vje"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn3w2"]
 texture = ExtResource("1_nglny")
@@ -241,7 +240,10 @@ texture = ExtResource("1_nglny")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pbevw")
 
-[node name="DungeonRoom1" type="Node2D"]
+[node name="DungeonRoom1" type="Node2D" node_paths=PackedStringArray("player_spawn", "enemy_spawn")]
+script = ExtResource("1_bn3w2")
+player_spawn = NodePath("PlayerSpawn")
+enemy_spawn = NodePath("EnemySpawn")
 
 [node name="TileMap_Floor" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -255,13 +257,7 @@ tile_map_data = PackedByteArray("AAAEAP3/AAABAAAAAAAFAP3/AAACAAAAAAAGAP3/AAADAAA
 tile_set = SubResource("TileSet_cv1i4")
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(82, -19)
 
-[node name="EnemyContainer" type="Node2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("2_bn3w2")]
-position = Vector2(209, 27)
-bounce_strength = 1.0
-attack_knockback = 300.0
-
-[node name="Grim" parent="." instance=ExtResource("6_n0vje")]
-position = Vector2(103, 23)
+[node name="EnemySpawn" type="Marker2D" parent="."]
+position = Vector2(145, 46)

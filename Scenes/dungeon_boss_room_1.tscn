@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://qutuuvbdj64m"]
 
+[ext_resource type="Script" uid="uid://ehhve5gy7qe4" path="res://Scripts/DungeonRoom.gd" id="1_82mw2"]
 [ext_resource type="Texture2D" uid="uid://urey55qem5u7" path="res://Assets/character and tileset/Dungeon_Tileset.png" id="1_fxjsk"]
-[ext_resource type="PackedScene" uid="uid://b0qswa671sqly" path="res://Scenes/player.tscn" id="2_ufps4"]
 [ext_resource type="Texture2D" uid="uid://r7r4ngrsmqas" path="res://Assets/items and trap_animation/torch/candlestick_2_1.png" id="3_82mw2"]
 [ext_resource type="Texture2D" uid="uid://k3lbj7hqyjoi" path="res://Assets/items and trap_animation/torch/candlestick_2_2.png" id="4_5g4p3"]
 [ext_resource type="Texture2D" uid="uid://x8v0r6k45anb" path="res://Assets/items and trap_animation/torch/candlestick_2_3.png" id="5_xddch"]
@@ -264,7 +264,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="DungeonRoom1" type="Node2D"]
+[node name="DungeonBossRoom1" type="Node2D" node_paths=PackedStringArray("player_spawn", "enemy_spawn")]
+script = ExtResource("1_82mw2")
+player_spawn = NodePath("PlayerSpawn")
+enemy_spawn = NodePath("EnemySpawn")
+is_boss_room = true
 
 [node name="TileMap_Floor" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -278,15 +282,10 @@ tile_map_data = PackedByteArray("AAAXAAQAAAABAAAAAAAYAAQAAAACAAAAAAAZAAQAAAADAAA
 tile_set = SubResource("TileSet_cv1i4")
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(367, 193)
 
-[node name="EnemyContainer" type="Node2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("2_ufps4")]
-position = Vector2(293, 124)
-friction = 2000.0
-bounce_strength = 1.0
-boost_cooldown = 0.0
-attack_knockback = 300.0
+[node name="EnemySpawn" type="Marker2D" parent="."]
+position = Vector2(518, 192)
 
 [node name="torch" type="Node2D" parent="."]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bwjdwfg7xc031"]
 
 [ext_resource type="Texture2D" uid="uid://urey55qem5u7" path="res://Assets/character and tileset/Dungeon_Tileset.png" id="1_6uqcd"]
-[ext_resource type="PackedScene" uid="uid://b0qswa671sqly" path="res://Scenes/player.tscn" id="2_23la8"]
+[ext_resource type="Script" uid="uid://ehhve5gy7qe4" path="res://Scripts/DungeonRoom.gd" id="1_23la8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn3w2"]
 texture = ExtResource("1_6uqcd")
@@ -240,7 +240,10 @@ texture = ExtResource("1_6uqcd")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pbevw")
 
-[node name="DungeonRoom1" type="Node2D"]
+[node name="DungeonRoom3" type="Node2D" node_paths=PackedStringArray("player_spawn", "enemy_spawn")]
+script = ExtResource("1_23la8")
+player_spawn = NodePath("PlayerSpawn")
+enemy_spawn = NodePath("EnemySpawn")
 
 [node name="TileMap_Floor" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -254,10 +257,7 @@ tile_map_data = PackedByteArray("AAAIAAAAAAAEAAUAAAAJAAAAAAACAAQAAAAKAAAAAAADAAQ
 tile_set = SubResource("TileSet_cv1i4")
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(116, -15)
 
-[node name="EnemyContainer" type="Node2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("2_23la8")]
-position = Vector2(293, 124)
-bounce_strength = 1.0
-attack_knockback = 300.0
+[node name="EnemySpawn" type="Marker2D" parent="."]
+position = Vector2(559, 131)

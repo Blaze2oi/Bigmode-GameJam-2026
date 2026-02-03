@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Slick Game Prj"
-run/main_scene="uid://d1eks6d6ojeu0"
+run/main_scene="uid://cc42mu3e0oyy"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameData="*res://Scripts/GameData.gd"
 
 [filesystem]
 
