@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var friction = -55  # The friction coefficient that slows down the car
 @export var drag = -0.06  # Air drag coefficient that also slows down the car
 @export var braking = -450  # Braking power when the brake input is applied
-@export var max_speed_reverse = 250  # Maximum speed limit in reverse
+@export var max_speed_reverse = 900  # Maximum speed limit in reverse
 @export var slip_speed = 400  # Speed above which the car's traction decreases (for drifting)
 @export var traction_fast = 2.5  # Traction factor when the car is moving fast (affects control)
 @export var traction_slow = 10  # Traction factor when the car is moving slow (affects control)
