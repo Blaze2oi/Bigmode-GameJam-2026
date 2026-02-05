@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cqopq4pcakfmq"
-path="res://.godot/imported/Do4BrainBold-2ODJo.ttf-35e1b7780635a4cb7c8fea4764931c93.fontdata"
+path="res://.godot/imported/Do4BrainBold-2ODJo.ttf-c23f08d09e7a49678f977d85cc542e56.fontdata"
 
 [deps]
 
-source_file="res://Assets/Do4BrainBold-2ODJo.ttf"
-dest_files=["res://.godot/imported/Do4BrainBold-2ODJo.ttf-35e1b7780635a4cb7c8fea4764931c93.fontdata"]
+source_file="res://Assets/Fonts/Do4BrainBold-2ODJo.ttf"
+dest_files=["res://.godot/imported/Do4BrainBold-2ODJo.ttf-c23f08d09e7a49678f977d85cc542e56.fontdata"]
 
 [params]
 
