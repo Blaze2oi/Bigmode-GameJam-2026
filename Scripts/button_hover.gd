@@ -1,5 +1,8 @@
 extends TextureButton
 
+const CLICK_SOUND = preload("res://Assets/Audio/Click Sound.mp3")
+const HOVER_SOUND = preload("res://Assets/Audio/hover sound.mp3")
+
 @onready var label = $Label
 func _ready() -> void:
 	# Connect the mouse signals to our functions
@@ -8,11 +11,17 @@ func _ready() -> void:
 
 func _on_hover() -> void:
 	# Darken the button (0.8, 0.8, 0.8 is dark gray)
-	label.visible_ratio = 0.0
-	var tween = create_tween()
-	tween.tween_property(label, "visible_ratio", 1.0, 0.5).set_trans(Tween.TRANS_CUBIC)
+	if label: 
+		label.visible_ratio = 0.0
+		var tween = create_tween()
+		tween.tween_property(label, "visible_ratio", 1.0, 0.5).set_trans(Tween.TRANS_CUBIC)
 	modulate = Color(0.8, 0.8, 0.8)
+	AudioManager.play_sfx(HOVER_SOUND)
 
 func _on_exit() -> void:
 	# Reset to normal full color (White means "no tint")
 	modulate = Color(1, 1, 1)
+
+
+func _on_pressed() -> void:
+	AudioManager.play_sfx(CLICK_SOUND)

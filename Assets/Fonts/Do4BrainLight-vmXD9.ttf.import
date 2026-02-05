@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ci8bgtehkkhns"
-path="res://.godot/imported/Do4BrainLight-vmXD9.ttf-4b3b66ac4a9d1e26428c7081df258f36.fontdata"
+path="res://.godot/imported/Do4BrainLight-vmXD9.ttf-7244b937912448fe19d057025c2f5a07.fontdata"
 
 [deps]
 
-source_file="res://Assets/Do4BrainLight-vmXD9.ttf"
-dest_files=["res://.godot/imported/Do4BrainLight-vmXD9.ttf-4b3b66ac4a9d1e26428c7081df258f36.fontdata"]
+source_file="res://Assets/Fonts/Do4BrainLight-vmXD9.ttf"
+dest_files=["res://.godot/imported/Do4BrainLight-vmXD9.ttf-7244b937912448fe19d057025c2f5a07.fontdata"]
 
 [params]
 

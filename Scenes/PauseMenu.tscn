@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://boi5mr5t16k5g" path="res://Assets/interface/Sprites/Content/Holders/11.png" id="4_lptsj"]
 [ext_resource type="Texture2D" uid="uid://cakrfa3am5jnv" path="res://Assets/interface/Sprites/Content/Holders/12.png" id="5_425uk"]
 [ext_resource type="Script" uid="uid://bsfs61a84iexp" path="res://Scripts/button_hover.gd" id="6_mys0b"]
-[ext_resource type="FontFile" uid="uid://cqopq4pcakfmq" path="res://Assets/Do4BrainBold-2ODJo.ttf" id="7_mys0b"]
+[ext_resource type="FontFile" uid="uid://cqopq4pcakfmq" path="res://Assets/Fonts/Do4BrainBold-2ODJo.ttf" id="7_c7c70"]
 [ext_resource type="Texture2D" uid="uid://5o04r7skm4tj" path="res://Assets/interface/Sprites/Content/Icons/7.png" id="8_c7c70"]
 [ext_resource type="Texture2D" uid="uid://cpfm48wju3udr" path="res://Assets/interface/Sprites/Content/Icons/8.png" id="9_pmvjn"]
 [ext_resource type="Texture2D" uid="uid://doqjj61k4tlwy" path="res://Assets/interface/Sprites/Content/Icons/0.png" id="10_1363l"]
@@ -62,7 +62,7 @@ offset_top = 14.5
 offset_right = 132.0
 offset_bottom = 37.5
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_mys0b")
+theme_override_fonts/font = ExtResource("7_c7c70")
 text = "Resume"
 
 [node name="0" type="Sprite2D" parent="VBoxContainer/Resume"]
@@ -83,7 +83,7 @@ offset_top = 15.5
 offset_right = 129.0
 offset_bottom = 38.5
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_mys0b")
+theme_override_fonts/font = ExtResource("7_c7c70")
 text = "Main Menu"
 
 [node name="7" type="Sprite2D" parent="VBoxContainer/MainMenu"]
@@ -104,7 +104,7 @@ offset_top = 16.5
 offset_right = 141.0
 offset_bottom = 39.5
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_mys0b")
+theme_override_fonts/font = ExtResource("7_c7c70")
 text = "Quit Game"
 
 [node name="8" type="Sprite2D" parent="VBoxContainer/Quit"]
@@ -118,7 +118,7 @@ offset_top = 195.0
 offset_right = 723.0
 offset_bottom = 221.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_mys0b")
+theme_override_fonts/font = ExtResource("7_c7c70")
 theme_override_font_sizes/font_size = 24
 text = "Game  Paused"
 
@@ -132,3 +132,7 @@ position = Vector2(768, 206.5)
 scale = Vector2(2, 1.84375)
 texture = ExtResource("11_c7c70")
 flip_h = true
+
+[connection signal="pressed" from="VBoxContainer/Resume" to="VBoxContainer/Resume" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="VBoxContainer/MainMenu" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Quit" method="_on_pressed"]
