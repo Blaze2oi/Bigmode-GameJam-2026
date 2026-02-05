@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://be0psvpaiwf4q" path="res://Assets/city assets/Bridge/Bridges.png" id="4_ciawh"]
 [ext_resource type="Texture2D" uid="uid://d1wuy1ciegpqe" path="res://Assets/city assets/Bridge/Water_animation2.png" id="5_2ygpt"]
 [ext_resource type="PackedScene" uid="uid://d0dti7586f0i3" path="res://car.tscn" id="6_ky23g"]
-[ext_resource type="Shader" uid="uid://dkkc1vxwvueac" path="res://SCRIPTS/city.gdshader" id="7_ciawh"]
+[ext_resource type="Shader" uid="uid://dkkc1vxwvueac" path="res://Scripts/city.gdshader" id="7_ciawh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ciawh"]
 texture = ExtResource("3_ky23g")

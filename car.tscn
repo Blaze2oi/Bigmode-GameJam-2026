@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0dti7586f0i3"]
 
 [ext_resource type="Texture2D" uid="uid://d0nwaogdkfx3f" path="res://Assets/Car.png" id="1_7822p"]
-[ext_resource type="Script" uid="uid://bj7cv16o8g7ap" path="res://SCRIPTS/car.gd" id="2_uoj53"]
+[ext_resource type="Script" uid="uid://bj7cv16o8g7ap" path="res://Scripts/car.gd" id="2_uoj53"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uoj53"]
 height = 616.825
