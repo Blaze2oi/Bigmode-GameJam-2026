@@ -44,7 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://cakrfa3am5jnv" path="res://Assets/interface/Sprites/Content/Holders/12.png" id="42_qwpoy"]
 [ext_resource type="Texture2D" uid="uid://boi5mr5t16k5g" path="res://Assets/interface/Sprites/Content/Holders/11.png" id="43_8m3ho"]
 [ext_resource type="Script" uid="uid://bsfs61a84iexp" path="res://Scripts/button_hover.gd" id="44_8m3ho"]
-[ext_resource type="FontFile" uid="uid://cqopq4pcakfmq" path="res://Assets/Do4BrainBold-2ODJo.ttf" id="45_h64ul"]
+[ext_resource type="FontFile" uid="uid://cqopq4pcakfmq" path="res://Assets/Fonts/Do4BrainBold-2ODJo.ttf" id="45_fw7q4"]
 [ext_resource type="Texture2D" uid="uid://ch04e7r62ylat" path="res://Assets/interface/Sprites/Content/Icons/2.png" id="46_oor3o"]
 [ext_resource type="Texture2D" uid="uid://c6srqjjvcwtmq" path="res://Assets/interface/Sprites/Content/Icons/3.png" id="47_h64ul"]
 [ext_resource type="Texture2D" uid="uid://cpfm48wju3udr" path="res://Assets/interface/Sprites/Content/Icons/8.png" id="48_y41we"]
@@ -326,7 +326,7 @@ offset_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("45_h64ul")
+theme_override_fonts/font = ExtResource("45_fw7q4")
 text = "Start Game"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -355,7 +355,7 @@ offset_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("45_h64ul")
+theme_override_fonts/font = ExtResource("45_fw7q4")
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -384,7 +384,7 @@ offset_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("45_h64ul")
+theme_override_fonts/font = ExtResource("45_fw7q4")
 text = "Quit Game"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -401,7 +401,7 @@ offset_top = 177.0
 offset_right = 750.0
 offset_bottom = 220.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("45_h64ul")
+theme_override_fonts/font = ExtResource("45_fw7q4")
 theme_override_font_sizes/font_size = 40
 text = "Main Menu"
 
@@ -450,7 +450,7 @@ scale = Vector2(0.686128, 0.631537)
 [node name="Label" type="Label" parent="OptionsPage/TextureRect/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("45_h64ul")
+theme_override_fonts/font = ExtResource("45_fw7q4")
 text = "Volume"
 
 [node name="BtnDown" type="TextureButton" parent="OptionsPage/TextureRect/HBoxContainer"]
@@ -460,6 +460,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("51_fw7q4")
 stretch_mode = 3
 flip_h = true
+script = ExtResource("44_8m3ho")
 
 [node name="VolumeBar" type="TextureProgressBar" parent="OptionsPage/TextureRect/HBoxContainer"]
 layout_mode = 2
@@ -472,13 +473,14 @@ texture_progress = ExtResource("53_pj4f5")
 [node name="PercentLabel" type="Label" parent="OptionsPage/TextureRect/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("45_h64ul")
+theme_override_fonts/font = ExtResource("45_fw7q4")
 text = "100%"
 
 [node name="BtnUp" type="TextureButton" parent="OptionsPage/TextureRect/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("51_fw7q4")
+script = ExtResource("44_8m3ho")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsPage"]
 layout_mode = 1
@@ -513,7 +515,7 @@ offset_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("45_h64ul")
+theme_override_fonts/font = ExtResource("45_fw7q4")
 text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -530,7 +532,7 @@ offset_top = 177.0
 offset_right = 723.0
 offset_bottom = 220.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("45_h64ul")
+theme_override_fonts/font = ExtResource("45_fw7q4")
 theme_override_font_sizes/font_size = 40
 text = "Options"
 
@@ -547,3 +549,10 @@ flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 322)
+
+[connection signal="pressed" from="MainPage/VBoxContainer/StartButton" to="MainPage/VBoxContainer/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="MainPage/VBoxContainer/OptionsButton" to="MainPage/VBoxContainer/OptionsButton" method="_on_pressed"]
+[connection signal="pressed" from="MainPage/VBoxContainer/QuitButton" to="MainPage/VBoxContainer/QuitButton" method="_on_pressed"]
+[connection signal="pressed" from="OptionsPage/TextureRect/HBoxContainer/BtnDown" to="OptionsPage/TextureRect/HBoxContainer/BtnDown" method="_on_pressed"]
+[connection signal="pressed" from="OptionsPage/TextureRect/HBoxContainer/BtnUp" to="OptionsPage/TextureRect/HBoxContainer/BtnUp" method="_on_pressed"]
+[connection signal="pressed" from="OptionsPage/VBoxContainer/BackButton" to="OptionsPage/VBoxContainer/BackButton" method="_on_pressed"]
