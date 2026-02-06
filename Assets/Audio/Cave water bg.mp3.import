@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhwwkrioq8mba"
+path="res://.godot/imported/Cave water bg.mp3-7140d1ad35188e8e46b5d885bca3ea0f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Cave water bg.mp3"
+dest_files=["res://.godot/imported/Cave water bg.mp3-7140d1ad35188e8e46b5d885bca3ea0f.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
