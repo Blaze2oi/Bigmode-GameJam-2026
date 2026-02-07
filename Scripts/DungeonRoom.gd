@@ -11,20 +11,28 @@ const LAYER_3 = preload("res://Assets/Audio/game music.mp3")
 var enemy_queue: Array = [] 
 
 func _ready() -> void:
-	AudioManager.play_dungeon_ambiance(LAYER_1, LAYER_2, LAYER_3, -20.0, -30.0, -15.0) 
-	var player = preload("res://Scenes/player.tscn").instantiate() 
-	player.name = "player" 
-	player.global_position = player_spawn.global_position 
-	player.health = GameData.player_health 
+	# 1. Audio Setup
+	AudioManager.play_dungeon_ambiance(LAYER_1, LAYER_2, LAYER_3, -20.0, -30.0, -15.0)
 	
-	# 1. Connect player death signal
-	# Replace "died" with whatever signal your player script uses for 0 health
+	# 2. Spawn Player
+	var player = preload("res://Scenes/player.tscn").instantiate()
+	player.name = "player" 
+	player.global_position = player_spawn.global_position
+	
+	# 3. Connect player death signal
 	if player.has_signal("died"):
-		player.died.connect(_on_player_died)
+		player.died.connect(_on_player_died) 
+	
+	# 4. IMPORTANT: Let the player script handle stats in its own _ready(), 
+	# or assign them here using the corrected GameData names:
+	# player.health = GameData.player_current_health
+	# player.max_health = GameData.player_max_health
 	
 	add_child(player)
+	
+	# 5. Room Setup
 	setup_wave()
-	spawn_next_enemy() 
+	spawn_next_enemy()
 
 func setup_wave() -> void:
 	# 2. Difficulty presets based on selected Delivery Level
@@ -36,10 +44,10 @@ func setup_wave() -> void:
 			[preload("res://Scenes/Slime.tscn")], [preload("res://Scenes/BeeSwarm.tscn")]
 		],
 		2: [ # Level 2 Options
-			#[preload("res://Scenes/Wolf.tscn"), preload("res://Scenes/Wolf.tscn")],
-			#[preload("res://Scenes/Wolf.tscn"), preload("res://Scenes/Goblin.tscn")],
+			[preload("res://Scenes/Wolf.tscn"), preload("res://Scenes/Wolf.tscn")],
+			[preload("res://Scenes/Wolf.tscn"), preload("res://Scenes/Goblin.tscn")],
 			[preload("res://Scenes/Wolf.tscn"), preload("res://Scenes/BeeSwarm.tscn")],
-			#[preload("res://Scenes/Slime.tscn"), preload("res://Scenes/Goblin.tscn")]
+			[preload("res://Scenes/Slime.tscn"), preload("res://Scenes/Goblin.tscn")]
 		],
 		3: [ # Level 3 Options
 			[preload("res://Scenes/Goblin.tscn"), preload("res://Scenes/Goblin.tscn")],
@@ -81,14 +89,14 @@ func _on_enemy_killed() -> void:
 func room_complete() -> void:
 	GameData.rooms_cleared += 1 
 	var p = get_node("player") 
-	if p: GameData.player_health = p.health 
+	if p: GameData.player_current_health = p.health 
 	load_next_room() 
 
 func load_next_room() -> void:
 	# 3. Boss Win -> Traveling back to future -> City Scene
 	if is_boss_room:
 		GameData.loading_text_override = "TRAVELLING BACK TO THE FUTURE"
-		GameData.next_room_path = "res://city.tscn"
+		GameData.next_room_path = "res://Scenes/city.tscn"
 		get_tree().change_scene_to_file("res://Scenes/LoadingScreen.tscn")
 		return
 

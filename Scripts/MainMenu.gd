@@ -9,8 +9,7 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	
-	GameData.player_health = 100 
-	GameData.rooms_cleared = 0 
+	 
 	get_tree().change_scene_to_file("res://Scenes/delivery_selection.tscn")
 
 

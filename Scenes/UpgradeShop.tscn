@@ -1,0 +1,317 @@
+[gd_scene load_steps=21 format=3 uid="uid://gbjnutw4brfm"]
+
+[ext_resource type="Script" uid="uid://chelbdhw8nwoh" path="res://Scripts/UpgradeShop.gd" id="1_b65xj"]
+[ext_resource type="Texture2D" uid="uid://dvheeeoe6jnuc" path="res://Assets/interface/Sprites/Pixel Map/0.png" id="1_folxo"]
+[ext_resource type="Texture2D" uid="uid://dauugipjmskrj" path="res://Assets/interface/Sprites/Content/Compass/3.png" id="2_2f42h"]
+[ext_resource type="FontFile" uid="uid://cqopq4pcakfmq" path="res://Assets/Fonts/Do4BrainBold-2ODJo.ttf" id="3_l8fxo"]
+[ext_resource type="Texture2D" uid="uid://clef0y4co6v8k" path="res://Assets/interface/Sprites/Content/Holders/0.png" id="4_bo1oo"]
+[ext_resource type="Texture2D" uid="uid://boi5mr5t16k5g" path="res://Assets/interface/Sprites/Content/Holders/11.png" id="5_3dt0n"]
+[ext_resource type="Texture2D" uid="uid://cakrfa3am5jnv" path="res://Assets/interface/Sprites/Content/Holders/12.png" id="6_rw2kv"]
+[ext_resource type="Script" uid="uid://bsfs61a84iexp" path="res://Scripts/button_hover.gd" id="7_b65xj"]
+[ext_resource type="Texture2D" uid="uid://e800rtlh3xe5" path="res://Assets/interface/Sprites/Content/Icons/4.png" id="8_ev4fx"]
+[ext_resource type="Texture2D" uid="uid://bm1pwudvtoew3" path="res://Assets/interface/Sprites/Content/Icons/13.png" id="9_2ls0y"]
+[ext_resource type="Texture2D" uid="uid://dy8uhel8rdosu" path="res://Assets/interface/Sprites/Content/Holders/3.png" id="10_ev4fx"]
+[ext_resource type="Texture2D" uid="uid://b2bh7x54b8uxw" path="res://Assets/interface/Sprites/Content/Icons/1.png" id="10_yn0rt"]
+[ext_resource type="Texture2D" uid="uid://ch04e7r62ylat" path="res://Assets/interface/Sprites/Content/Icons/2.png" id="13_2ls0y"]
+[ext_resource type="Texture2D" uid="uid://d3ysf4ay80dj8" path="res://Assets/interface/Sprites/Content/Holders/6.png" id="14_yn0rt"]
+[ext_resource type="Texture2D" uid="uid://b7bctof72i2jt" path="res://Assets/interface/Sprites/Content/Items/1.png" id="15_7q0ln"]
+[ext_resource type="Texture2D" uid="uid://dgl4mt53bg8ip" path="res://Assets/interface/Sprites/Content/Buttons/12.png" id="16_pak54"]
+[ext_resource type="Texture2D" uid="uid://0wwipipf2mq8" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/3/0.png" id="17_7q0ln"]
+[ext_resource type="Texture2D" uid="uid://d1lsoe7f8wpao" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/2/0.png" id="18_pak54"]
+[ext_resource type="Texture2D" uid="uid://f2bdi231hdvy" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/0/0.png" id="19_dpkek"]
+[ext_resource type="Texture2D" uid="uid://cu2lexdjleke1" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/6/0.png" id="20_36qub"]
+
+[node name="UpgradeShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b65xj")
+
+[node name="0" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(563, 314)
+scale = Vector2(1.81579, 1.70312)
+texture = ExtResource("1_folxo")
+
+[node name="3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(289, 482)
+scale = Vector2(1.27083, 1.25)
+texture = ExtResource("2_2f42h")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 523.0
+offset_top = 153.0
+offset_right = 713.0
+offset_bottom = 179.0
+scale = Vector2(1.30362, 1.52794)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l8fxo")
+theme_override_font_sizes/font_size = 24
+text = "Upgrades Shop"
+horizontal_alignment = 1
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(475, 173)
+scale = Vector2(2.60724, 2.81714)
+texture = ExtResource("4_bo1oo")
+
+[node name="2" type="Sprite2D" parent="."]
+position = Vector2(825, 173)
+scale = Vector2(2.60724, 2.81714)
+texture = ExtResource("4_bo1oo")
+flip_h = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -53.0
+offset_right = 96.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.64638, 1.46426)
+
+[node name="Health" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_3dt0n")
+texture_pressed = ExtResource("6_rw2kv")
+script = ExtResource("7_b65xj")
+
+[node name="Label" type="Label" parent="VBoxContainer/Health"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -10.0
+offset_right = 92.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.808204, 0.908087)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l8fxo")
+text = "Health upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Sprite2D" parent="VBoxContainer/Health"]
+position = Vector2(23.081, 24.4882)
+scale = Vector2(1.21479, 1.18904)
+texture = ExtResource("8_ev4fx")
+
+[node name="6" type="Sprite2D" parent="VBoxContainer/Health"]
+position = Vector2(190.722, 23.9029)
+scale = Vector2(0.949054, 1.02441)
+texture = ExtResource("10_ev4fx")
+
+[node name="Label" type="Label" parent="VBoxContainer/Health/6"]
+offset_left = -13.44
+offset_top = -6.0
+offset_right = 12.56
+offset_bottom = 10.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l8fxo")
+theme_override_font_sizes/font_size = 13
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_3dt0n")
+texture_pressed = ExtResource("6_rw2kv")
+script = ExtResource("7_b65xj")
+
+[node name="Label" type="Label" parent="VBoxContainer/Attack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -10.0
+offset_right = 92.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.808204, 0.908087)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l8fxo")
+text = "Attack upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="13" type="Sprite2D" parent="VBoxContainer/Attack"]
+position = Vector2(24.2958, 25.1723)
+scale = Vector2(1, 1)
+texture = ExtResource("9_2ls0y")
+
+[node name="6" type="Sprite2D" parent="VBoxContainer/Attack"]
+position = Vector2(190.722, 23.9029)
+scale = Vector2(0.949054, 1.02441)
+texture = ExtResource("10_ev4fx")
+
+[node name="Label" type="Label" parent="VBoxContainer/Attack/6"]
+offset_left = -13.44
+offset_top = -6.0
+offset_right = 12.56
+offset_bottom = 10.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l8fxo")
+theme_override_font_sizes/font_size = 13
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cooldown" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_3dt0n")
+texture_pressed = ExtResource("6_rw2kv")
+script = ExtResource("7_b65xj")
+
+[node name="Label" type="Label" parent="VBoxContainer/Cooldown"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -10.0
+offset_right = 92.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.808204, 0.908087)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l8fxo")
+text = "Att Cld upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Sprite2D" parent="VBoxContainer/Cooldown"]
+position = Vector2(23.6884, 26.4417)
+scale = Vector2(1.06294, 1.28051)
+texture = ExtResource("10_yn0rt")
+
+[node name="6" type="Sprite2D" parent="VBoxContainer/Cooldown"]
+position = Vector2(190.722, 23.9029)
+scale = Vector2(0.949054, 1.02441)
+texture = ExtResource("10_ev4fx")
+
+[node name="Label" type="Label" parent="VBoxContainer/Cooldown/6"]
+offset_left = -13.44
+offset_top = -6.0
+offset_right = 12.56
+offset_bottom = 10.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l8fxo")
+theme_override_font_sizes/font_size = 13
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextDel" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_3dt0n")
+texture_pressed = ExtResource("6_rw2kv")
+script = ExtResource("7_b65xj")
+
+[node name="Label" type="Label" parent="VBoxContainer/NextDel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -10.0
+offset_right = 92.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.808204, 0.908087)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l8fxo")
+text = "Next Delivery"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Sprite2D" parent="VBoxContainer/NextDel"]
+position = Vector2(23.081, 26.3452)
+scale = Vector2(0.949054, 1.22414)
+texture = ExtResource("13_2ls0y")
+
+[node name="6" type="Sprite2D" parent="."]
+position = Vector2(596, 234)
+scale = Vector2(1.70312, 1.59375)
+texture = ExtResource("14_yn0rt")
+
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(596, 232)
+scale = Vector2(1.625, 1.625)
+texture = ExtResource("15_7q0ln")
+
+[node name="12" type="Sprite2D" parent="4"]
+position = Vector2(45.5385, 0)
+scale = Vector2(1.35959, 1.34615)
+texture = ExtResource("16_pak54")
+
+[node name="Label" type="Label" parent="4"]
+offset_left = 20.3077
+offset_top = -8.61539
+offset_right = 70.3077
+offset_bottom = 14.3846
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l8fxo")
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="5" type="Sprite2D" parent="."]
+position = Vector2(242, 107.875)
+scale = Vector2(1.75, 1.69531)
+texture = ExtResource("17_7q0ln")
+
+[node name="7" type="Sprite2D" parent="."]
+position = Vector2(307, 108)
+scale = Vector2(1.75, 1.69531)
+texture = ExtResource("18_pak54")
+
+[node name="8" type="Sprite2D" parent="."]
+position = Vector2(273, 108)
+scale = Vector2(1.73047, 1.67969)
+texture = ExtResource("19_dpkek")
+
+[node name="9" type="Sprite2D" parent="."]
+position = Vector2(337.75, 107.75)
+scale = Vector2(1.76562, 1.64063)
+texture = ExtResource("20_36qub")
+
+[node name="Label" type="Label" parent="9"]
+offset_left = -54.7965
+offset_top = 24.5333
+offset_right = -18.7965
+offset_bottom = 35.5333
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l8fxo")
+theme_override_font_sizes/font_size = 9
+text = "future"
+
+[connection signal="pressed" from="VBoxContainer/Health" to="VBoxContainer/Health" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Attack" to="VBoxContainer/Attack" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Cooldown" to="VBoxContainer/Cooldown" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/NextDel" to="VBoxContainer/NextDel" method="_on_pressed"]

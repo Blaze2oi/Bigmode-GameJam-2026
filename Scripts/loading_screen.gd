@@ -10,6 +10,10 @@ func _ready() -> void:
 		$Label.text = "FINAL ROOM"
 	else:
 		$Label.text = "ROOM " + str(GameData.rooms_cleared + 1)
+		print(GameData.player_attack_cooldown)
+		print(GameData.player_attack)
+		print(GameData.player_current_health)
+		print(GameData.player_max_health)
 		
 	await get_tree().create_timer(3.0).timeout
 	get_tree().change_scene_to_file(GameData.next_room_path)

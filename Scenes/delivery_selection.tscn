@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6x1sh0xeb1mh"]
+[gd_scene load_steps=17 format=3 uid="uid://c6x1sh0xeb1mh"]
 
 [ext_resource type="Texture2D" uid="uid://dvheeeoe6jnuc" path="res://Assets/interface/Sprites/Pixel Map/0.png" id="1_ksk1w"]
 [ext_resource type="Texture2D" uid="uid://boi5mr5t16k5g" path="res://Assets/interface/Sprites/Content/Holders/11.png" id="1_pyldr"]
@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://cvq0xbylu1qty" path="res://Scripts/Taskdesc.gd" id="11_a75kn"]
 [ext_resource type="Texture2D" uid="uid://dl4kkcu7ne1gp" path="res://Assets/interface/Sprites/Content/Icons/11.png" id="12_37oke"]
 [ext_resource type="Texture2D" uid="uid://clef0y4co6v8k" path="res://Assets/interface/Sprites/Content/Holders/0.png" id="13_xvvae"]
+[ext_resource type="Texture2D" uid="uid://d1lsoe7f8wpao" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/2/0.png" id="14_37oke"]
+[ext_resource type="Texture2D" uid="uid://f2bdi231hdvy" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/0/0.png" id="15_xvvae"]
+[ext_resource type="Texture2D" uid="uid://cu2lexdjleke1" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/6/0.png" id="16_r43rg"]
 
 [node name="DeliverySelection" type="Control"]
 layout_mode = 3
@@ -217,6 +220,36 @@ position = Vector2(815, 173)
 scale = Vector2(2.60724, 2.81714)
 texture = ExtResource("13_xvvae")
 flip_h = true
+
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(242, 107.875)
+scale = Vector2(1.75, 1.69531)
+texture = ExtResource("14_37oke")
+
+[node name="6" type="Sprite2D" parent="."]
+position = Vector2(307, 108)
+scale = Vector2(1.75, 1.69531)
+texture = ExtResource("14_37oke")
+
+[node name="5" type="Sprite2D" parent="."]
+position = Vector2(273, 108)
+scale = Vector2(1.73047, 1.67969)
+texture = ExtResource("15_xvvae")
+
+[node name="7" type="Sprite2D" parent="."]
+position = Vector2(337.75, 107.75)
+scale = Vector2(1.76562, 1.64063)
+texture = ExtResource("16_r43rg")
+
+[node name="Label" type="Label" parent="7"]
+offset_left = -57.6284
+offset_top = 23.9238
+offset_right = -17.6284
+offset_bottom = 34.9238
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_nbqpy")
+theme_override_font_sizes/font_size = 9
+text = "Present"
 
 [connection signal="mouse_entered" from="VBoxContainer/EasyTask" to="VBoxContainer/10" method="_on_easy_task_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/EasyTask" to="VBoxContainer/10" method="_on_easy_task_mouse_exited"]
