@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal died 
+
 @export_group("Movement")
 @export var max_speed: float = 300.0
 @export var accel: float = 1000.0
@@ -7,9 +9,7 @@ extends CharacterBody2D
 @export var bounce_strength: float = 0.8
 
 @export_group("Abilities")
-@export var boost_force: float = 900.0
-@export var boost_cooldown: float = 0.6
-@export var attack_damage: int = 200
+@export var attack_damage: int = 20
 @export var attack_knockback: float = 900.0
 @export var attack_cooldown: float = 0.5
 
@@ -45,9 +45,7 @@ func _physics_process(delta: float) -> void:
 	velocity += dir * accel * delta
 	if velocity.length() > max_speed: velocity = velocity.normalized() * max_speed
 	velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-	if Input.is_action_just_pressed("boost") and boost_timer <= 0:
-		velocity += dir * boost_force
-		boost_timer = boost_cooldown
+	
 	update_animation(dir)
 	var angle_to_mouse = (mouse_pos - global_position).angle()
 	attack_area.rotation = angle_to_mouse
@@ -72,12 +70,14 @@ func _activate_sprite(active: AnimatedSprite2D) -> void:
 	active.visible = true; 
 
 func take_damage(amount: int) -> void:
-	health -= amount
+	if is_dead: return
 	
-	# UPDATE UI
+	health -= amount
 	health_bar.value = health
 	
-	print("Player HP:", health)
+	# Update GameData immediately so health persists between rooms 
+	GameData.player_health = health 
+	
 	if health <= 0:
 		die()
 
@@ -85,16 +85,25 @@ func knockback(dir: Vector2, force: float) -> void:
 	velocity += dir.normalized() * force
 
 func die() -> void:
-	if is_dead: return # Prevent die() from triggering twice
+	if is_dead: return 
 	
-	is_dead = true # <--- 3. SET STATE TO TRUE
-	velocity = Vector2.ZERO # Optional: Stop sliding immediately
+	is_dead = true
+	velocity = Vector2.ZERO 
 	
-	anim.play("death")
-	print("Player Dead")
+	# Stop player collision so they don't get hit during the death animation
+	set_collision_layer_value(1, false) 
+	set_collision_mask_value(1, false)
+
+	# Check if the animation exists in the SpriteFrames resource
+	if anim.sprite_frames.has_animation("death"):
+		anim.play("death")
+		await anim.animation_finished
+	else:
+		# Fallback if you forgot to name the animation "death"
+		print("Warning: 'death' animation not found in AnimatedSprite2D")
 	
-	await anim.animation_finished
-	get_tree().reload_current_scene()
+	# Emit the signal for DungeonRoom.gd to catch
+	died.emit()
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body == self: return

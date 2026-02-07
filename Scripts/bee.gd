@@ -4,10 +4,10 @@ extends CharacterBody2D
 @export var max_speed: float = 180.0
 @export var accel: float = 700.0
 @export var friction: float = 150.0
-@export var bounce_strength: float = 1.5
+@export var bounce_strength: float = 1.1
 
 @export_group("Stats")
-@export var max_health: int = 70
+@export var max_health: int = 50
 @export var damage_to_player: int = 5
 @export var attack_cooldown: float = 1.0
 
@@ -157,6 +157,8 @@ func take_damage(amount: int) -> void:
 		die()
 
 func die() -> void:
+	GameData.player_money += 20
+	print(GameData.player_money)
 	is_dying = true
 	
 	# Hide UI

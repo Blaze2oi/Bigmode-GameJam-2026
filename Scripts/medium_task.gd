@@ -26,4 +26,5 @@ func _on_exit() -> void:
 func _on_pressed() -> void:
 	AudioManager.play_sfx(CLICK_SOUND)
 	GameData.player_level = 2
+	GameData.player_health = 100
 	get_tree().change_scene_to_file("res://Scenes/StoryScene.tscn")

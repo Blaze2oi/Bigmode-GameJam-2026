@@ -156,6 +156,8 @@ func take_damage(amount: int) -> void:
 		die()
 
 func die() -> void:
+	GameData.player_money += 10
+	print(GameData.player_money)
 	is_dying = true
 	
 	# Hide UI

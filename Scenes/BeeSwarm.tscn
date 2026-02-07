@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7bsvp65b7tnj"]
+
+[ext_resource type="PackedScene" uid="uid://xueff6jdcgvh" path="res://Scenes/Bee.tscn" id="1_3xxq6"]
+[ext_resource type="Script" uid="uid://d0cdx7pjs730b" path="res://Scripts/BeeSwarm.gd" id="1_ho8qq"]
+
+[node name="BeeSwarm" type="Node2D"]
+script = ExtResource("1_ho8qq")
+
+[node name="Bee" parent="." instance=ExtResource("1_3xxq6")]
+position = Vector2(-9, -8)
+
+[node name="Bee2" parent="." instance=ExtResource("1_3xxq6")]
+position = Vector2(11, 2)
+
+[node name="Bee3" parent="." instance=ExtResource("1_3xxq6")]
+position = Vector2(-7, 12)
