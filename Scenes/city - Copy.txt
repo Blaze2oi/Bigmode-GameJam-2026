@@ -1,14 +1,13 @@
 [gd_scene load_steps=28 format=4 uid="uid://se72yo0kdb42"]
 
-[ext_resource type="Texture2D" uid="uid://bbimrxd44yxev" path="res://Assets/city assets/Grass.png" id="1_3qc4n"]
-[ext_resource type="Texture2D" uid="uid://d1v7bktehtqnq" path="res://Assets/city assets/GuttyKreum_JapaneseCity_Freev1/Free_Version/Tilemap/Tilemap.png" id="2_ujmo6"]
-[ext_resource type="Texture2D" uid="uid://cswvr2a68ssmu" path="res://Assets/city assets/Bridge/Water_animation3.png" id="3_h0cym"]
-[ext_resource type="Texture2D" uid="uid://be0psvpaiwf4q" path="res://Assets/city assets/Bridge/Bridges.png" id="4_wm66b"]
-[ext_resource type="Texture2D" uid="uid://d1wuy1ciegpqe" path="res://Assets/city assets/Bridge/Water_animation2.png" id="5_ifi4l"]
-[ext_resource type="PackedScene" uid="uid://d0dti7586f0i3" path="res://Scenes/car.tscn" id="6_2cq4n"]
-[ext_resource type="Shader" uid="uid://dkkc1vxwvueac" path="res://SCRIPTS/city.gdshader" id="7_gab5h"]
-[ext_resource type="Script" uid="uid://bwuv16h8ybalh" path="res://SCRIPTS/mission_manager.gd" id="8_h0cym"]
-[ext_resource type="Texture2D" uid="uid://crjmpqrv0smxj" path="res://Assets/items and trap_animation/flag/flag_3.png" id="9_h0cym"]
+[ext_resource type="Texture2D" uid="uid://d1v7bktehtqnq" path="res://Assets/city assets/GuttyKreum_JapaneseCity_Freev1/Free_Version/Tilemap/Tilemap.png" id="1_hpa3k"]
+[ext_resource type="Texture2D" uid="uid://csvwr2a68ssmu" path="res://Assets/city assets/Bridge/Water_animation3.png" id="2_4as0u"]
+[ext_resource type="Texture2D" uid="uid://bbimrxd44yxev" path="res://Assets/city assets/Grass.png" id="3_ky23g"]
+[ext_resource type="Texture2D" uid="uid://be0psvpaiwf4q" path="res://Assets/city assets/Bridge/Bridges.png" id="4_ciawh"]
+[ext_resource type="Texture2D" uid="uid://d1wuy1ciegpqe" path="res://Assets/city assets/Bridge/Water_animation2.png" id="5_2ygpt"]
+[ext_resource type="PackedScene" uid="uid://d0dti7586f0i3" path="res://Scenes/car.tscn" id="6_ky23g"]
+[ext_resource type="Shader" uid="uid://dkkc1vxwvueac" path="res://Scripts/city.gdshader" id="7_gab5h"]
+[ext_resource type="Script" uid="uid://bwuv16h8ybalh" path="res://Scripts/mission_manager.gd" id="8_h0cym"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ciawh"]
 texture = ExtResource("1_3qc4n")
@@ -8571,4 +8570,4 @@ shape = SubResource("CircleShape2D_ujmo6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Goal"]
 scale = Vector2(14.7725, 20.4237)
-texture = ExtResource("9_h0cym")
+texture = ExtResource("8_ujmo6")
