@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export_group("Abilities")
 @export var boost_force: float = 900.0
 @export var boost_cooldown: float = 0.6
-@export var attack_damage: int = 20
+@export var attack_damage: int = 200
 @export var attack_knockback: float = 900.0
 @export var attack_cooldown: float = 0.5
 

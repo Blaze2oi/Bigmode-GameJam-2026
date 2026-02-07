@@ -12,3 +12,5 @@ var player_MaxExp: int =100
 # Dungeon Progression
 var rooms_cleared: int = 0
 var room_order: Array = [] # Stores paths like ["res://dungeon_room_2.tscn", "res://dungeon_room_1.tscn"]
+var next_room_path: String = ""
+var is_next_boss: bool = false
