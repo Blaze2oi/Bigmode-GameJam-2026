@@ -1,0 +1,226 @@
+[gd_scene load_steps=14 format=3 uid="uid://c6x1sh0xeb1mh"]
+
+[ext_resource type="Texture2D" uid="uid://dvheeeoe6jnuc" path="res://Assets/interface/Sprites/Pixel Map/0.png" id="1_ksk1w"]
+[ext_resource type="Texture2D" uid="uid://boi5mr5t16k5g" path="res://Assets/interface/Sprites/Content/Holders/11.png" id="1_pyldr"]
+[ext_resource type="Texture2D" uid="uid://dauugipjmskrj" path="res://Assets/interface/Sprites/Content/Compass/3.png" id="2_n6l3j"]
+[ext_resource type="Texture2D" uid="uid://cakrfa3am5jnv" path="res://Assets/interface/Sprites/Content/Holders/12.png" id="2_vc8e4"]
+[ext_resource type="Script" uid="uid://bro0o2mmgfjo" path="res://Scripts/easy_task.gd" id="3_ncv5e"]
+[ext_resource type="Script" uid="uid://bj02ls3xkqnl5" path="res://Scripts/medium_task.gd" id="4_i5040"]
+[ext_resource type="Script" uid="uid://56fefdm77ujd" path="res://Scripts/hard_task.gd" id="5_vwlbi"]
+[ext_resource type="FontFile" uid="uid://cqopq4pcakfmq" path="res://Assets/Fonts/Do4BrainBold-2ODJo.ttf" id="6_nbqpy"]
+[ext_resource type="Texture2D" uid="uid://b2bh7x54b8uxw" path="res://Assets/interface/Sprites/Content/Icons/1.png" id="7_ts1ai"]
+[ext_resource type="Texture2D" uid="uid://dwxhyerdfs2ae" path="res://Assets/interface/Sprites/Content/Holders/10.png" id="10_yq28j"]
+[ext_resource type="Script" uid="uid://cvq0xbylu1qty" path="res://Scripts/Taskdesc.gd" id="11_a75kn"]
+[ext_resource type="Texture2D" uid="uid://dl4kkcu7ne1gp" path="res://Assets/interface/Sprites/Content/Icons/11.png" id="12_37oke"]
+[ext_resource type="Texture2D" uid="uid://clef0y4co6v8k" path="res://Assets/interface/Sprites/Content/Holders/0.png" id="13_xvvae"]
+
+[node name="DeliverySelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 0.427451)
+
+[node name="0" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(563, 314)
+scale = Vector2(1.46053, 1.34375)
+texture = ExtResource("1_ksk1w")
+
+[node name="3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(342, 447)
+scale = Vector2(1.27083, 1.25)
+texture = ExtResource("2_n6l3j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -85.0
+offset_right = 138.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EasyTask" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pyldr")
+texture_pressed = ExtResource("2_vc8e4")
+script = ExtResource("3_ncv5e")
+
+[node name="Label" type="Label" parent="VBoxContainer/EasyTask"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -9.0
+offset_right = 91.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.861625, 1.04824)
+theme_override_colors/font_color = Color(0.572257, 1, 0.376456, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_nbqpy")
+text = "Jeweled Goblet"
+
+[node name="1" type="Sprite2D" parent="VBoxContainer/EasyTask"]
+position = Vector2(24, 26)
+scale = Vector2(1.03125, 1.0625)
+texture = ExtResource("7_ts1ai")
+
+[node name="MediumTask" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pyldr")
+texture_pressed = ExtResource("2_vc8e4")
+script = ExtResource("4_i5040")
+
+[node name="Label" type="Label" parent="VBoxContainer/MediumTask"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -9.0
+offset_right = 93.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.848113, 1.05303)
+theme_override_colors/font_color = Color(0.333017, 0.537533, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_nbqpy")
+text = "Whispering Ring"
+
+[node name="2" type="Sprite2D" parent="VBoxContainer/MediumTask"]
+position = Vector2(26, 24)
+scale = Vector2(1.03125, 1.0625)
+texture = ExtResource("7_ts1ai")
+
+[node name="3" type="Sprite2D" parent="VBoxContainer/MediumTask"]
+position = Vector2(24, 28)
+scale = Vector2(1.03125, 1.0625)
+texture = ExtResource("7_ts1ai")
+
+[node name="HardTask" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_pyldr")
+texture_pressed = ExtResource("2_vc8e4")
+script = ExtResource("5_vwlbi")
+
+[node name="Label" type="Label" parent="VBoxContainer/HardTask"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -8.0
+offset_right = 117.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.746585, 1.05461)
+theme_override_colors/font_color = Color(1, 0.510256, 0.443869, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_nbqpy")
+text = "Enchanted Amulet"
+
+[node name="6" type="Sprite2D" parent="VBoxContainer/HardTask"]
+position = Vector2(20, 22)
+scale = Vector2(1.03125, 1.0625)
+texture = ExtResource("7_ts1ai")
+
+[node name="4" type="Sprite2D" parent="VBoxContainer/HardTask"]
+position = Vector2(25.5, 24)
+scale = Vector2(1.03125, 1.0625)
+texture = ExtResource("7_ts1ai")
+
+[node name="5" type="Sprite2D" parent="VBoxContainer/HardTask"]
+position = Vector2(23.5, 28)
+scale = Vector2(1.03125, 1.0625)
+texture = ExtResource("7_ts1ai")
+
+[node name="10" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(87.1964, 204.468)
+scale = Vector2(1.34836, -1.07912)
+texture = ExtResource("10_yq28j")
+script = ExtResource("11_a75kn")
+
+[node name="Label" type="Label" parent="VBoxContainer/10"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -13.0
+offset_right = 49.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.689614, -1.13357)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_nbqpy")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="11" type="Sprite2D" parent="VBoxContainer/10"]
+position = Vector2(-89.6986, -2.57784)
+scale = Vector2(0.845933, -1.057)
+texture = ExtResource("12_37oke")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 533.0
+offset_top = 195.0
+offset_right = 723.0
+offset_bottom = 221.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_nbqpy")
+theme_override_font_sizes/font_size = 24
+text = "Set Difficulty"
+horizontal_alignment = 1
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(489, 207.5)
+scale = Vector2(2, 1.84375)
+texture = ExtResource("13_xvvae")
+
+[node name="2" type="Sprite2D" parent="."]
+position = Vector2(768, 206.5)
+scale = Vector2(2, 1.84375)
+texture = ExtResource("13_xvvae")
+flip_h = true
+
+[connection signal="mouse_entered" from="VBoxContainer/EasyTask" to="VBoxContainer/10" method="_on_easy_task_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/EasyTask" to="VBoxContainer/10" method="_on_easy_task_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/EasyTask" to="VBoxContainer/EasyTask" method="_on_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/MediumTask" to="VBoxContainer/10" method="_on_medium_task_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/MediumTask" to="VBoxContainer/10" method="_on_medium_task_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/MediumTask" to="VBoxContainer/MediumTask" method="_on_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HardTask" to="VBoxContainer/10" method="_on_hard_task_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HardTask" to="VBoxContainer/10" method="_on_hard_task_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/HardTask" to="VBoxContainer/HardTask" method="_on_pressed"]

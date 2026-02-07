@@ -4,12 +4,17 @@ extends Node2D
 @export var enemy_spawn: Marker2D
 @export var is_boss_room: bool = false
 
+const LAYER_1 = preload("res://Assets/Audio/Cave Bg.mp3")
+const LAYER_2 = preload("res://Assets/Audio/Cave water bg.mp3")
+const LAYER_3 = preload("res://Assets/Audio/game music.mp3")
+
 # Current wave configuration
 var enemy_queue: Array = []
 var current_enemy_count: int = 0
 
 func _ready() -> void:
 	# 1. Spawn Player at Marker
+	AudioManager.play_dungeon_ambiance(LAYER_1, LAYER_2, LAYER_3, -20.0, -30.0, -15.0)
 	var player = preload("res://Scenes/player.tscn").instantiate()
 	player.name = "player"
 	player.global_position = player_spawn.global_position
@@ -79,18 +84,31 @@ func room_complete() -> void:
 	load_next_room()
 
 func load_next_room() -> void:
-	# Logic to pick the next room
-	# If we just finished room 1, go to 2, etc.
-	# You can randomize this in a Main Menu script, but here is a simple sequence:
-	
+	# 1. Check if the player just finished the boss room 
 	if is_boss_room:
-		print("YOU WIN THE GAME")
-		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
-	elif GameData.rooms_cleared >= 2:
-		get_tree().change_scene_to_file("res://Scenes/dungeon_boss_room_1.tscn")
+		print("YOU WIN THE GAME") 
+		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn") 
+		return
+
+	# 2. Determine which room should be loaded next 
+	var next_scene_path: String = ""
+	
+	if GameData.rooms_cleared >= 2:
+		# If the clear threshold is met, target the boss room 
+		next_scene_path = "res://Scenes/dungeon_boss_room_1.tscn" 
+		GameData.is_next_boss = true # Custom flag for the loading screen text
 	else:
-		# Randomly pick a normal room, or follow a list
-		# For this example, let's just reload random normal rooms
-		var rooms = ["res://Scenes/dungeon_room_1.tscn", "res://Scenes/dungeon_room_2.tscn", "res://Scenes/dungeon_room_3.tscn"]
-		var next_room = rooms.pick_random()
-		get_tree().change_scene_to_file(next_room)
+		# Otherwise, pick a random normal room 
+		var rooms = [
+			"res://Scenes/dungeon_room_1.tscn", 
+			"res://Scenes/dungeon_room_2.tscn", 
+			"res://Scenes/dungeon_room_3.tscn"
+		] 
+		next_scene_path = rooms.pick_random() 
+		GameData.is_next_boss = false
+
+	# 3. Store the destination in your Global GameData 
+	GameData.next_room_path = next_scene_path
+	
+	# 4. Change to the Loading Screen instead of the dungeon directly
+	get_tree().change_scene_to_file("res://Scenes/LoadingScreen.tscn")
