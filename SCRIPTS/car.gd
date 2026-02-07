@@ -91,7 +91,7 @@ func fade_buildings(target_alpha: float):
 
 func get_input(delta):
 	# Steering Input
-	var turn = Input.get_axis("move_left", "move_right")
+	var turn = Input.get_axis("left", "right")
 	var target_steer = turn * deg_to_rad(steering_angle)
 	
 	if turn == 0:
@@ -102,13 +102,9 @@ func get_input(delta):
 	steer_direction = current_steer
 
 	# Forward Acceleration
-<<<<<<< Updated upstream
-	if Input.is_action_pressed("move_up"):
-		acceleration = transform.x * engine_power
-=======
+
 	if Input.is_action_pressed("up"):
 		acceleration += transform.x * engine_power
->>>>>>> Stashed changes
 
 	# Braking/Handbrake Logic
 	if Input.is_action_pressed("ui_select"): # Space
@@ -118,11 +114,8 @@ func get_input(delta):
 			velocity = Vector2.ZERO
 			acceleration = Vector2.ZERO
 		traction_fast = 0.4
-<<<<<<< Updated upstream
-	elif Input.is_action_pressed("move_down"): # Regular Brake/Reverse
-=======
-	elif Input.is_action_pressed("down"):
->>>>>>> Stashed changes
+
+	elif Input.is_action_pressed("down"): # Regular Brake/Reverse
 		acceleration = transform.x * braking
 		traction_fast = 0.8
 	else:
