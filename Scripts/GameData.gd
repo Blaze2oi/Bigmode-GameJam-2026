@@ -5,7 +5,7 @@ var player_current_health: int = 100 # Track current HP
 var player_max_health: int = 100
 var player_stamina: float = 100.0
 var player_money: int = 0
-var player_attack: int = 2000
+var player_attack: int = 20
 var player_level: int = 1
 var player_attack_cooldown: float = 0.5
 
