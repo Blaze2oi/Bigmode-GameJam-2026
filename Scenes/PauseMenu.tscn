@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxqu7t2b058i0"]
+[gd_scene load_steps=16 format=3 uid="uid://bxqu7t2b058i0"]
 
 [ext_resource type="Script" uid="uid://bsdmb7ox5ixlg" path="res://Scripts/PauseMenu.gd" id="1_lj4oq"]
 [ext_resource type="Texture2D" uid="uid://dvheeeoe6jnuc" path="res://Assets/interface/Sprites/Pixel Map/0.png" id="2_yxrls"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://cpfm48wju3udr" path="res://Assets/interface/Sprites/Content/Icons/8.png" id="9_pmvjn"]
 [ext_resource type="Texture2D" uid="uid://doqjj61k4tlwy" path="res://Assets/interface/Sprites/Content/Icons/0.png" id="10_1363l"]
 [ext_resource type="Texture2D" uid="uid://clef0y4co6v8k" path="res://Assets/interface/Sprites/Content/Holders/0.png" id="11_c7c70"]
+[ext_resource type="Texture2D" uid="uid://7d3oqsi78ug2" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/1/0.png" id="12_n6ygf"]
+[ext_resource type="Texture2D" uid="uid://d1lsoe7f8wpao" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/2/0.png" id="13_dhr51"]
+[ext_resource type="Texture2D" uid="uid://f2bdi231hdvy" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/0/0.png" id="14_p6p71"]
+[ext_resource type="Texture2D" uid="uid://cu2lexdjleke1" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/6/0.png" id="15_hw4na"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -132,6 +136,37 @@ position = Vector2(768, 206.5)
 scale = Vector2(2, 1.84375)
 texture = ExtResource("11_c7c70")
 flip_h = true
+
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(304, 151.25)
+scale = Vector2(1.4375, 1.35938)
+texture = ExtResource("12_n6ygf")
+
+[node name="6" type="Sprite2D" parent="."]
+position = Vector2(357, 152.016)
+scale = Vector2(1.4375, 1.31152)
+texture = ExtResource("13_dhr51")
+
+[node name="5" type="Sprite2D" parent="."]
+position = Vector2(329.289, 151.422)
+scale = Vector2(1.35694, 1.34863)
+texture = ExtResource("14_p6p71")
+
+[node name="7" type="Sprite2D" parent="."]
+position = Vector2(381.813, 151.219)
+scale = Vector2(1.38672, 1.29883)
+texture = ExtResource("15_hw4na")
+
+[node name="Label" type="Label" parent="7"]
+offset_left = -57.6284
+offset_top = 23.9238
+offset_right = -17.6284
+offset_bottom = 34.9238
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_c7c70")
+theme_override_font_sizes/font_size = 9
+text = "Past"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Resume" to="VBoxContainer/Resume" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="VBoxContainer/MainMenu" method="_on_pressed"]

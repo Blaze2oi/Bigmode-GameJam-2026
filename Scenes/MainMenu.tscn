@@ -1,7 +1,7 @@
-[gd_scene load_steps=56 format=3 uid="uid://cc42mu3e0oyy"]
+[gd_scene load_steps=59 format=3 uid="uid://cc42mu3e0oyy"]
 
-[ext_resource type="Script" uid="uid://cflm0xxjjxshr" path="res://SCRIPTS/menutransition.gd" id="1_leunp"]
-[ext_resource type="Script" uid="uid://bx5lhu1a4qvco" path="res://SCRIPTS/MainMenu.gd" id="1_tt5f1"]
+[ext_resource type="Script" uid="uid://cflm0xxjjxshr" path="res://Scripts/menutransition.gd" id="1_leunp"]
+[ext_resource type="Script" uid="uid://bx5lhu1a4qvco" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://cj4ovx2kdmxum" path="res://Assets/interface/Sprites/Content/Background/0.png" id="2_5hdia"]
 [ext_resource type="Texture2D" uid="uid://cjto0wtg11jg0" path="res://Assets/interface/Sprites/Page Flip/Next Page/1.png" id="2_h1v62"]
 [ext_resource type="Texture2D" uid="uid://dfi05bs3rpvm2" path="res://Assets/interface/Sprites/Page Flip/Next Page/2.png" id="3_5hdia"]
@@ -43,7 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://biykjn0j5fnlw" path="res://Assets/interface/Sprites/Content/Clock/1.png" id="41_pj4f5"]
 [ext_resource type="Texture2D" uid="uid://cakrfa3am5jnv" path="res://Assets/interface/Sprites/Content/Holders/12.png" id="42_qwpoy"]
 [ext_resource type="Texture2D" uid="uid://boi5mr5t16k5g" path="res://Assets/interface/Sprites/Content/Holders/11.png" id="43_8m3ho"]
-[ext_resource type="Script" uid="uid://bsfs61a84iexp" path="res://SCRIPTS/button_hover.gd" id="44_8m3ho"]
+[ext_resource type="Script" uid="uid://bsfs61a84iexp" path="res://Scripts/button_hover.gd" id="44_8m3ho"]
 [ext_resource type="FontFile" uid="uid://cqopq4pcakfmq" path="res://Assets/Fonts/Do4BrainBold-2ODJo.ttf" id="45_fw7q4"]
 [ext_resource type="Texture2D" uid="uid://ch04e7r62ylat" path="res://Assets/interface/Sprites/Content/Icons/2.png" id="46_oor3o"]
 [ext_resource type="Texture2D" uid="uid://c6srqjjvcwtmq" path="res://Assets/interface/Sprites/Content/Icons/3.png" id="47_h64ul"]
@@ -54,6 +54,9 @@
 [ext_resource type="Texture2D" uid="uid://dsjuwdwtcwwie" path="res://Assets/interface/Sprites/Content/Buttons/4.png" id="51_fw7q4"]
 [ext_resource type="Texture2D" uid="uid://ofyivg5wcyy1" path="res://Assets/interface/Sprites/Content/Buttons/9.png" id="52_grj4f"]
 [ext_resource type="Texture2D" uid="uid://dbc7xrfujjf4c" path="res://Assets/interface/Sprites/Content/Buttons/10.png" id="53_pj4f5"]
+[ext_resource type="Texture2D" uid="uid://d1lsoe7f8wpao" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/2/0.png" id="55_k5x2d"]
+[ext_resource type="Texture2D" uid="uid://f2bdi231hdvy" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/0/0.png" id="56_w3p2m"]
+[ext_resource type="Texture2D" uid="uid://cu2lexdjleke1" path="res://Assets/interface/Sprites/Content/Clock/Clock Digits/6/0.png" id="57_3qfoj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lcy8p"]
 animations = [{
@@ -549,6 +552,38 @@ flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 322)
+
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(254, 104.125)
+scale = Vector2(1.75, 1.69531)
+texture = ExtResource("55_k5x2d")
+
+[node name="6" type="Sprite2D" parent="."]
+position = Vector2(319, 104.25)
+scale = Vector2(1.75, 1.69531)
+texture = ExtResource("55_k5x2d")
+
+[node name="5" type="Sprite2D" parent="."]
+position = Vector2(285, 104.25)
+scale = Vector2(1.73047, 1.67969)
+texture = ExtResource("56_w3p2m")
+
+[node name="7" type="Sprite2D" parent="."]
+position = Vector2(349.75, 104)
+scale = Vector2(1.76562, 1.64063)
+texture = ExtResource("57_3qfoj")
+
+[node name="Label" type="Label" parent="7"]
+offset_left = -58.1947
+offset_top = 24.9905
+offset_right = -18.1947
+offset_bottom = 35.9905
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("45_fw7q4")
+theme_override_font_sizes/font_size = 9
+text = "Present"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="MainPage/VBoxContainer/StartButton" to="MainPage/VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="MainPage/VBoxContainer/OptionsButton" to="MainPage/VBoxContainer/OptionsButton" method="_on_pressed"]

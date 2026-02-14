@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://be0psvpaiwf4q" path="res://Assets/city assets/Bridge/Bridges.png" id="4_wm66b"]
 [ext_resource type="Texture2D" uid="uid://d1wuy1ciegpqe" path="res://Assets/city assets/Bridge/Water_animation2.png" id="5_ifi4l"]
 [ext_resource type="PackedScene" uid="uid://d0dti7586f0i3" path="res://Scenes/car.tscn" id="6_2cq4n"]
-[ext_resource type="Shader" uid="uid://dkkc1vxwvueac" path="res://SCRIPTS/city.gdshader" id="7_gab5h"]
-[ext_resource type="Script" uid="uid://bwuv16h8ybalh" path="res://SCRIPTS/mission_manager.gd" id="8_h0cym"]
+[ext_resource type="Shader" uid="uid://dkkc1vxwvueac" path="res://Scripts/city.gdshader" id="7_gab5h"]
+[ext_resource type="Script" uid="uid://bwuv16h8ybalh" path="res://Scripts/mission_manager.gd" id="8_h0cym"]
 [ext_resource type="Texture2D" uid="uid://crjmpqrv0smxj" path="res://Assets/items and trap_animation/flag/flag_3.png" id="9_h0cym"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ciawh"]

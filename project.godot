@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Slick Game Prj"
+config/name="Slash n Dash"
+config/version="1.1"
 run/main_scene="uid://cc42mu3e0oyy"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://bmlyv3skp7bei"
 
 [autoload]
 
